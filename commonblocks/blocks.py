@@ -19,7 +19,7 @@ DEFAULT_COMMONBLOCKS_HEADING = (
     ('h5', 'h5'),
 )
 
-HEADINGS = getattr(settings, 'COMMONBLOCKS_HEADINGS', DEFAULT_COMMONBLOCKS_HEADING)
+HEADINGS = (('', _('Choose your heading')), ) + getattr(settings, 'COMMONBLOCKS_HEADINGS', DEFAULT_COMMONBLOCKS_HEADING)
 
 
 class CommonPageChooserBlock(blocks.PageChooserBlock):
