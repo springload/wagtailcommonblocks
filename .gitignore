@@ -1,0 +1,19 @@
+.DS_Store
+*.pyc
+*.pyo
+.installed.cfg
+bin
+.idea/
+develop-eggs
+# dist
+downloads
+eggs
+parts
+src/*.egg-info
+lib64
+*.log
+*.pot
+static/CACHE/*
+media/*
+.anaconda
+*.DS_Store

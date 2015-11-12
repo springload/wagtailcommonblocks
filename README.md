@@ -17,19 +17,17 @@ Add commonblocks to your `settings.py` in the INSTALLED_APPS section:
 ```
 # Available blocks
 
-* SpecificPageChooserBlock
+* CommonPageChooserBlock
 * SimpleRichTextBlock
-* FullImageBlock
-* QuoteBlock
-* HeadingBlock
-* VideoBlock
-* InternalLink
-* ExternalLink
-* InternalButtonLink
-* ExternalButtonLink
-* LinksBlock
+* CommonImageBlock
+* CommonQuoteBlock
+* CommonHeadingBlock
+* CommonVideoBlock
+* CommonInternalLink
+* CommonExternalLink
+* CommonLinksBlock
 
-You can override the headings of the `HeadingBlock` block:
+You can override the headings of the `CommonHeadingBlock` block:
 
 ```
 ...
