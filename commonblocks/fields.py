@@ -2,19 +2,20 @@ import json
 
 from django.db import models
 
-from wagtail.wagtailcore.whitelist import Whitelister, attribute_rule, check_url
+from wagtail.wagtailcore.whitelist import attribute_rule, check_url
+from wagtail.wagtailcore.rich_text import DbWhitelister
 from wagtail.wagtailcore.fields import RichTextArea
 
 allow_without_attributes = attribute_rule({})
 
 
-class SimpleDbWhitelister(Whitelister):
+class SimpleDbWhitelister(DbWhitelister):
     """
-    Whitelister to allow/disallow stuff on the text editor
+    DbWhitelister to allow/disallow stuff on the text editor
     """
     element_rules = {
         '[document]': allow_without_attributes,
-        'a': attribute_rule({'href': check_url}),
+        'a': attribute_rule({'href': check_url, 'id': True, 'linktype': True}),
         'p': allow_without_attributes,
         'b': allow_without_attributes,
         'i': allow_without_attributes,
@@ -22,7 +23,6 @@ class SimpleDbWhitelister(Whitelister):
         'ul': allow_without_attributes,
         'ol': allow_without_attributes,
         'li': allow_without_attributes,
-        'h2': allow_without_attributes,
     }
 
 
@@ -53,7 +53,7 @@ class SimpleRichTextArea(RichTextArea):
             'format': False,
             'removeTags': ['span', 'div', 'table', 'strong'],
             'allowedTags': ['a', 'p', 'i', 'b'],
-            'removeAttrs': ['class', 'style', 'id'],
+            'removeAttrs': ['class', 'style'],
             'allowedAttributes': [
                 ['a', ['href', 'target', 'id', 'linktype']]
             ]

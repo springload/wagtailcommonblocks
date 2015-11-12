@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load commonblocks_tags wagtailimages_tags %}
 
 <figure>
     {% if self.image.width > self.image.height %}
@@ -8,7 +8,7 @@
     {% endif %}
     
     {% if self.caption %}
-        <figcaption>{% self.caption|richtext %}</figcaption>
+        <figcaption>{{ self.caption|simplerichtext }}</figcaption>
     {% endif %}
 
      {% if self.license_url %}

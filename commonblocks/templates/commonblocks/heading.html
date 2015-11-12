@@ -1,6 +1,6 @@
-<header>
-<{{ self.size }}>{{ self.title }}</{{self.size}}>
+<div class='header'>
+<{{ self.size }} id="{{ self.title|slugify }}">{{ self.title }}</{{ self.size }}>
 {% if self.subtitle %}
     <span>{{ self.subtitle }}</span>
 {% endif %}
-</header>
+</div>

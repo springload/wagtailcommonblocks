@@ -10,6 +10,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
 
 from commonblocks.fields import SimpleRichTextArea
+from commonblocks.simple_rich_text import SimpleRichText
 
 
 DEFAULT_COMMONBLOCKS_HEADING = (
@@ -17,6 +18,12 @@ DEFAULT_COMMONBLOCKS_HEADING = (
     ('h3', 'h3'),
     ('h4', 'h4'),
     ('h5', 'h5'),
+)
+
+TARGETS = (
+    ('', 'Open link in'),
+    ('_self', 'Same window'),
+    ('_blank', 'New window'),
 )
 
 HEADINGS = (('', _('Choose your heading')), ) + getattr(settings, 'COMMONBLOCKS_HEADINGS', DEFAULT_COMMONBLOCKS_HEADING)
@@ -38,6 +45,24 @@ class CommonPageChooserBlock(blocks.PageChooserBlock):
 
 
 class SimpleRichTextBlock(RichTextBlock):
+    """
+    Custom block inheriting from Wagtail's original one but replacing the RichText by a SimpleRichText
+    """
+    def get_default(self):
+        if isinstance(self.meta.default, SimpleRichText):
+            return self.meta.default
+        else:
+            return SimpleRichText(self.meta.default)
+
+    def to_python(self, value):
+        # convert a source-HTML string from the JSONish representation
+        # to a SimpleRichText object
+        return SimpleRichText(value)
+
+    def value_from_form(self, value):
+        # RichTextArea returns a source-HTML string; concert to a SimpleRichText object
+        return SimpleRichText(value)
+
     @cached_property
     def field(self):
         return forms.CharField(widget=SimpleRichTextArea, **self.field_options)
@@ -136,6 +161,12 @@ class CommonExternalLink(blocks.StructBlock):
     """
     link = blocks.URLBlock(required=True)
     title = blocks.CharBlock(required=True)
+    target = blocks.ChoiceBlock(
+        required=True,
+        choices=TARGETS,
+        default='_self',
+        help_text=_('Open link in')
+    )
 
     class Meta:
         template = 'commonblocks/external_link.html'

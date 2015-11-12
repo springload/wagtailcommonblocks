@@ -1,7 +1,9 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load commonblocks_tags wagtailimages_tags %}
 
 {{ self.video|safe }}
-
+    
 {% if self.caption %}
-    {% self.caption|richtext %}
+<caption>
+    {{ self.caption|simplerichtext }}
+</caption>
 {% endif %}
