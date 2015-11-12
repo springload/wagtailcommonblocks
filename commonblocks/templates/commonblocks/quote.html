@@ -1,0 +1,22 @@
+{% load wagtailimages_tags %}
+
+<div class="media spacer-top spacer-bottom margin-bottom">
+    <div class="media-left">
+        {% if self.image %}
+            {% image self.image fill-75x75 class="img-circle" %}
+        {% endif %}
+    </div>
+    <div class="media-body">
+        <blockquote>
+            {% self.quote|richtext %}
+            {% if self.author %}
+                <cite>
+                {{ self.author }}
+                {% if self.author_title %}
+                    , {{ self.author_title }}
+                {% endif %}
+                </cite>
+            {% endif %}
+        </blockquote>
+    </div>
+</div>

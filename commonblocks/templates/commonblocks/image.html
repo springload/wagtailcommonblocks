@@ -1,0 +1,22 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<figure>
+    {% if self.image.width > self.image.height %}
+        {% image self.image width-800 class="img-responsive" alt=self.get_title %}
+    {% else %}
+        {% image self.image height-400 class="img-responsive" alt=self.get_title %}
+    {% endif %}
+    
+    {% if self.caption %}
+        <figcaption>{% self.caption|richtext %}</figcaption>
+    {% endif %}
+
+     {% if self.license_url %}
+        <small><a rel="license" title="{{ self.license_name }}" href="{{ self.license_url }}">{{ self.license_name }}</a></small>
+    {% endif %}
+
+     {% if self.attribution %}
+        <span>{{ self.attribution }}</span>
+    {% endif %}
+
+</figure>

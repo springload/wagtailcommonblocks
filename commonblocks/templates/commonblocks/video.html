@@ -1,0 +1,7 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{{ self.video|safe }}
+
+{% if self.caption %}
+    {% self.caption|richtext %}
+{% endif %}
