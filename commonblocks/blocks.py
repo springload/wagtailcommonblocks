@@ -92,7 +92,7 @@ class CommonHeadingBlock(blocks.StructBlock):
     subtitle = blocks.CharBlock(required=False)
 
     class Meta:
-        icon = 'cogs'
+        icon = 'title'
         template = 'commonblocks/heading.html'
 
 
@@ -127,7 +127,7 @@ class CommonInternalLink(blocks.StructBlock):
 
     class Meta:
         template = 'commonblocks/internal_link.html'
-        icon = 'media'
+        icon = 'link'
 
 
 class CommonExternalLink(blocks.StructBlock):
@@ -139,7 +139,7 @@ class CommonExternalLink(blocks.StructBlock):
 
     class Meta:
         template = 'commonblocks/external_link.html'
-        icon = 'cog'
+        icon = 'site'
 
 
 class CommonLinksBlock(blocks.StreamBlock):
@@ -151,4 +151,4 @@ class CommonLinksBlock(blocks.StreamBlock):
 
     class Meta:
         template = 'commonblocks/links.html'
-        icon = 'pick'
+        icon = 'link'
