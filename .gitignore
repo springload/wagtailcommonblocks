@@ -9,11 +9,12 @@ develop-eggs
 downloads
 eggs
 parts
-src/*.egg-info
-lib64
 *.log
 *.pot
 static/CACHE/*
 media/*
+build/*
+dist/*
+*.egg-info
 .anaconda
 *.DS_Store
