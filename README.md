@@ -5,7 +5,7 @@ Wagtail Commonblocks
 
 Assuming you have a [Wagtail](https://wagtail.io/) project up and running:
 
-``` $ pip install commonblocks```
+``` $ pip install wagtailcommonblocks```
 
 Add commonblocks to your `settings.py` in the INSTALLED_APPS section:
 
