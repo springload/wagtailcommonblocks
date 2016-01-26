@@ -7,7 +7,7 @@ Assuming you have a [Wagtail](https://wagtail.io/) project up and running:
 
 ``` $ pip install wagtailcommonblocks```
 
-Add commonblocks to your `settings.py` in the INSTALLED_APPS section:
+Add commonblocks to your `settings.py` in the INSTALLED_APPS section, before the core wagtail packages:
 
 ```
 ...
@@ -36,3 +36,9 @@ COMMONBLOCKS_HEADING = (
     ('h2', 'h2'),
 )
 ```
+
+# Version history
+
+* [0.0.2](releases/tag/0.0.2) compatible with [Wagtail 1.2](https://github.com/torchbox/wagtail/tree/v1.2)
+* [0.0.1](releases/tag/0.0.1) compatible with [Wagtail 1.1](https://github.com/torchbox/wagtail/tree/v1.1)
+
