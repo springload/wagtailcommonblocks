@@ -39,6 +39,6 @@ COMMONBLOCKS_HEADING = (
 
 # Version history
 
-* [0.0.2](releases/tag/0.0.2) compatible with [Wagtail 1.2](https://github.com/torchbox/wagtail/tree/v1.2)
-* [0.0.1](releases/tag/0.0.1) compatible with [Wagtail 1.1](https://github.com/torchbox/wagtail/tree/v1.1)
+* [0.0.2](https://github.com/springload/wagtailblocks/tree/0.0.2) compatible with [Wagtail 1.2](https://github.com/torchbox/wagtail/tree/v1.2)
+* [0.0.1](https://github.com/springload/wagtailblocks/tree/0.0.1) compatible with [Wagtail 1.1](https://github.com/torchbox/wagtail/tree/v1.1)
 
