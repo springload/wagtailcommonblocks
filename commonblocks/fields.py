@@ -4,7 +4,7 @@ from django.db import models
 
 from wagtail.wagtailcore.whitelist import attribute_rule, check_url
 from wagtail.wagtailcore.rich_text import DbWhitelister
-from wagtail.wagtailcore.fields import RichTextArea
+from wagtail.wagtailcore.fields import RichTextField
 
 allow_without_attributes = attribute_rule({})
 
@@ -26,7 +26,7 @@ class SimpleDbWhitelister(DbWhitelister):
     }
 
 
-class SimpleRichTextArea(RichTextArea):
+class SimpleRichTextArea(RichTextField):
     """
     Customised RichTextArea
     """
