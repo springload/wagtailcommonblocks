@@ -65,7 +65,7 @@ class SimpleRichTextBlock(RichTextBlock):
 
     @cached_property
     def field(self):
-        return forms.CharField(widget=SimpleRichTextArea, **self.field_options)
+        return forms.CharField(widget=SimpleRichTextArea().formfield().widget.__class__, **self.field_options)
 
     class Meta:
         icon = 'bold'
