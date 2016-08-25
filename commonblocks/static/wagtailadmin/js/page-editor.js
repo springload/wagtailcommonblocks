@@ -75,15 +75,6 @@ function makeRichTextEditable(id, plugins) {
     setupLinkTooltips(richText);
 }
 
-function insertRichTextDeleteControl(elem) {
-    var a = $('<a class="icon icon-cross text-replace delete-control">Delete</a>');
-    $(elem).addClass('rich-text-deletable').prepend(a);
-    a.click(function() {
-        $(elem).fadeOut(function() {
-            $(elem).remove();
-        });
-    });
-}
 
 function initDateChooser(id) {
     if (window.dateTimePickerTranslations) {
