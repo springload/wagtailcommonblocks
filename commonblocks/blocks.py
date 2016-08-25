@@ -9,8 +9,8 @@ from wagtail.wagtailcore.blocks import RichTextBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
 
-from commonblocks.fields import SimpleRichTextArea
 from commonblocks.simple_rich_text import SimpleRichText
+from commonblocks.widgets import HalloWidget
 
 
 DEFAULT_COMMONBLOCKS_HEADING = (
@@ -65,7 +65,7 @@ class SimpleRichTextBlock(RichTextBlock):
 
     @cached_property
     def field(self):
-        return forms.CharField(widget=SimpleRichTextArea().formfield().widget.__class__, **self.field_options)
+        return forms.CharField(widget=HalloWidget, **self.field_options)
 
     class Meta:
         icon = 'bold'
