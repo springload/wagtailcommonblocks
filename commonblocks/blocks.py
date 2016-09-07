@@ -115,6 +115,7 @@ class CommonHeadingBlock(blocks.StructBlock):
     size = blocks.ChoiceBlock(required=True, choices=HEADINGS, help_text=_('Heading Size'))
     title = blocks.CharBlock(required=True)
     subtitle = blocks.CharBlock(required=False)
+    anchor_id = blocks.CharBlock(required=False)
 
     class Meta:
         icon = 'title'

@@ -1,5 +1,5 @@
 <div class='header'>
-<{{ self.size }} id="{{ self.title|slugify }}">{{ self.title }}</{{ self.size }}>
+<{{ self.size }} id="{% if self.anchor_id %}{{ self.anchor_id }}{% else %}{{ self.title|slugify }}{% endif %}">{{ self.title }}</{{ self.size }}>
 {% if self.subtitle %}
     <span>{{ self.subtitle }}</span>
 {% endif %}
