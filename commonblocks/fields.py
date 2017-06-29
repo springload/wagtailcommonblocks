@@ -61,7 +61,7 @@ class SimpleRichTextArea(HalloRichTextArea):
     }
 
     def render_js_init(self, id_, name, value):
-        return "makeRichTextEditable({0}, {1});".format(
+        return "makeHalloSimpleRichTextEditable({0}, {1});".format(
             json.dumps(id_),
             json.dumps(self.hallo_plugins)
         )
