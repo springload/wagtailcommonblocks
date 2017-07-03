@@ -1,19 +1,17 @@
 'use strict';
 
-/**
- * registerHalloPlugin() applies to all editor instances of a Page.
- * We want to encapsulate custom plugin configuration, per field.
- */
 function makeHalloSimpleRichTextEditable(id, plugins) {
-    var defaultPlugins = $.extend({}, halloPlugins);
+    if ($.isPlainObject(plugins)) {
+        var defaultPlugins = $.extend(true, {}, window.halloPlugins);
 
-    if (typeof plugins === 'object') {
         $.each(plugins, function(plugin, options) {
-            registerHalloPlugin(plugin, options);
+            window.registerHalloPlugin(plugin, options);
         });
 
-        makeHalloRichTextEditable(id);
-    }
+        window.makeHalloRichTextEditable(id);
 
-    halloPlugins = $.extend({}, defaultPlugins);
+        window.halloPlugins = $.extend(true, {}, defaultPlugins);
+    }
 };
+
+window.makeHalloSimpleRichTextEditable = makeHalloSimpleRichTextEditable;
