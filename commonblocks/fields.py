@@ -4,7 +4,7 @@ from django.db import models
 
 from wagtail.wagtailcore.whitelist import attribute_rule, check_url
 from wagtail.wagtailcore.rich_text import DbWhitelister
-from wagtail.wagtailcore.fields import RichTextArea
+from wagtail.wagtailadmin.rich_text import HalloRichTextArea
 
 allow_without_attributes = attribute_rule({})
 
@@ -26,7 +26,7 @@ class SimpleDbWhitelister(DbWhitelister):
     }
 
 
-class SimpleRichTextArea(RichTextArea):
+class SimpleRichTextArea(HalloRichTextArea):
     """
     Customised RichTextArea
     """
@@ -61,7 +61,7 @@ class SimpleRichTextArea(RichTextArea):
     }
 
     def render_js_init(self, id_, name, value):
-        return "makeRichTextEditable({0}, {1});".format(
+        return "makeHalloSimpleRichTextEditable({0}, {1});".format(
             json.dumps(id_),
             json.dumps(self.hallo_plugins)
         )
