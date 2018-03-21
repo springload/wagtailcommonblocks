@@ -18,3 +18,5 @@ dist/*
 *.egg-info
 .anaconda
 *.DS_Store
+*.sqlite3
+tests/testapp/var/media/
