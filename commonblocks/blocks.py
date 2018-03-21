@@ -4,13 +4,19 @@ from django.utils.functional import cached_property
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.blocks import RichTextBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
-
 from commonblocks.fields import SimpleRichTextArea
 from commonblocks.simple_rich_text import SimpleRichText
+
+try:
+    from wagtail.core import blocks
+    from wagtail.core.blocks import RichTextBlock
+    from wagtail.embeds.blocks import EmbedBlock
+    from wagtail.images.blocks import ImageChooserBlock
+except ImportError:
+    from wagtail.wagtailcore import blocks
+    from wagtail.wagtailcore.blocks import RichTextBlock
+    from wagtail.wagtailimages.blocks import ImageChooserBlock
+    from wagtail.wagtailembeds.blocks import EmbedBlock
 
 
 DEFAULT_COMMONBLOCKS_HEADING = (

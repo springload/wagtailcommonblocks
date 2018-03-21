@@ -1,7 +1,10 @@
 from django.utils.safestring import mark_safe
 from django.utils.encoding import python_2_unicode_compatible
 
-from wagtail.wagtailcore.rich_text import RichText, expand_db_html
+try:
+    from wagtail.core.rich_text import RichText, expand_db_html
+except:
+    from wagtail.wagtailcore.rich_text import RichText, expand_db_html
 
 
 @python_2_unicode_compatible
