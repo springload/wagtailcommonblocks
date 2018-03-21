@@ -42,7 +42,7 @@ class CommonPageChooserBlock(blocks.PageChooserBlock):
     def __init__(self, can_choose_root=False, page_class='Page', app='wagtail.wagtailcore.models', **kwargs):
         self.page_class = page_class
         self.app = app
-        super(SpecificPageChooserBlock, self).__init__(can_choose_root, **kwargs)
+        super(CommonPageChooserBlock, self).__init__(can_choose_root, **kwargs)
 
     @cached_property
     def target_model(self):
