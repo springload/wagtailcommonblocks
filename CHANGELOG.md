@@ -1,0 +1,29 @@
+# Change Log
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/)
+and this project adheres to [Semantic Versioning](http://semver.org/).
+
+## [Unreleased]
+
+### Fixed
+- Compatibility with Wagtail 2.0
+
+## [0.0.3] - 2017-07-04
+
+### Fixed
+- Compatibility with Wagtail 1.5
+
+## [0.0.2] - 2016-01-27
+
+### Fixed
+- Compatibility with Wagtail 1.2
+
+## [0.0.1] - 2015-11-25
+
+Initial Release
+
+[Unreleased]: https://github.com/springload/wagtailcommonblocks/compare/0.0.3...HEAD
+[0.3]: https://github.com/springload/wagtailcommonblocks/compare/0.0.2...0.0.3
+[0.2]: https://github.com/springload/wagtailcommonblocks/compare/0.0.1...0.0.2
+[0.1]: https://github.com/springload/wagtailcommonblocks/compare/a9159c46ab8b6cf31213b9c97730fc5fd40c309c...0.0.1
