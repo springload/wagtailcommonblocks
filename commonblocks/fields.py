@@ -1,6 +1,8 @@
 import json
 
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.db import models
+from django.forms import Media
 
 try:
     from wagtail.admin.rich_text import HalloRichTextArea
@@ -77,6 +79,15 @@ class SimpleRichTextArea(HalloRichTextArea):
         if original_value is None:
             return None
         return SimpleDbWhitelister.clean(original_value)
+
+    @property
+    def media(self):
+        base_media = super(SimpleRichTextArea, self).media
+        custom_media = Media(js=[
+            static('commonblocks/js/vendor/jquery.htmlClean.min.js'),
+            static('commonblocks/js/hallo-bootstrap.js'),
+        ])
+        return base_media + custom_media
 
 
 class SimpleRichTextField(models.TextField):
