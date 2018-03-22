@@ -1,16 +1,24 @@
+import warnings
+
 from django import forms
 from django.apps import apps
 from django.utils.functional import cached_property
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.blocks import RichTextBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
-
 from commonblocks.fields import SimpleRichTextArea
 from commonblocks.simple_rich_text import SimpleRichText
+
+try:
+    from wagtail.core import blocks
+    from wagtail.core.blocks import RichTextBlock
+    from wagtail.embeds.blocks import EmbedBlock
+    from wagtail.images.blocks import ImageChooserBlock
+except ImportError:
+    from wagtail.wagtailcore import blocks
+    from wagtail.wagtailcore.blocks import RichTextBlock
+    from wagtail.wagtailimages.blocks import ImageChooserBlock
+    from wagtail.wagtailembeds.blocks import EmbedBlock
 
 
 DEFAULT_COMMONBLOCKS_HEADING = (
@@ -31,17 +39,21 @@ HEADINGS = (('', _('Choose your heading')), ) + getattr(settings, 'COMMONBLOCKS_
 
 class CommonPageChooserBlock(blocks.PageChooserBlock):
     """
-    Custom PageChooser that allows filter by models classname
-    """
-    def __init__(self, can_choose_root=False, page_class='Page', app='wagtail.wagtailcore.models', **kwargs):
-        self.page_class = page_class
-        self.app = app
-        super(SpecificPageChooserBlock, self).__init__(can_choose_root, **kwargs)
+    Deprecated. Use Wagtail's builtin `PageChooserBlock` instead.
 
-    @cached_property
-    def target_model(self):
-        page_class = apps.get_model(self.app, self.page_class)
-        return page_class
+    Note: We cannot remove the block from the package
+    because it would break migrations as it is referenced there.
+    """
+
+    def __init__(self, can_choose_root=False, page_class='Page', app='wagtailcore', **kwargs):
+        warnings.warn(
+            "CommonPageChooserBlock is deprecated, use Wagtail's builtin PageChooserBlock instead",
+            DeprecationWarning
+        )
+
+        target_model = '{0}.{1}'.format(app, page_class)
+        super(CommonPageChooserBlock, self).__init__(
+            target_model=target_model, can_choose_root=can_choose_root, **kwargs)
 
 
 class SimpleRichTextBlock(RichTextBlock):

@@ -8,7 +8,7 @@ function makeHalloSimpleRichTextEditable(id, plugins) {
             window.registerHalloPlugin(plugin, options);
         });
 
-        window.makeHalloRichTextEditable(id);
+        window.makeHalloRichTextEditable(id, plugins);
 
         window.halloPlugins = $.extend(true, {}, defaultPlugins);
     }
