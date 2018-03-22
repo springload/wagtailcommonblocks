@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 + PageChooserBlock(target_model='my_app.MyModel')
 ```
 
+### Upgrade consideration
+
+- Hold off if you're using `SimpleRichTextBlock` or `SimpleRichTextField`, see #8 for more information
+
 ## [0.0.3] - 2017-07-04
 
 ### Fixed
