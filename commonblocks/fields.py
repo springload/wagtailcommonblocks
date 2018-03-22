@@ -103,6 +103,7 @@ class SimpleRichTextArea(HalloRichTextArea):
         base_media = super(SimpleRichTextArea, self).media
         custom_media = Media(js=[
             static('commonblocks/js/vendor/jquery.htmlClean.min.js'),
+            static('commonblocks/js/vendor/rangy-selectionsaverestore.js'),
             static('commonblocks/js/hallo-bootstrap.js'),
         ])
         return base_media + custom_media
