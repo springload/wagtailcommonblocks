@@ -10,6 +10,7 @@ except ImportError:
 @hooks.register('insert_editor_js')
 def editor_js():
     js_files = [
+        'commonblocks/js/vendor/jquery.htmlClean.min.js',
         'commonblocks/js/hallo-bootstrap.js',
     ]
 
