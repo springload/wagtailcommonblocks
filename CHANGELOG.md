@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+...
+
+## [0.1] - 2018-03-22
+
 ### Fixed
 
 - Compatibility with Wagtail 2.0
@@ -42,7 +46,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 Initial Release
 
-[Unreleased]: https://github.com/springload/wagtailcommonblocks/compare/0.0.3...HEAD
-[0.3]: https://github.com/springload/wagtailcommonblocks/compare/0.0.2...0.0.3
-[0.2]: https://github.com/springload/wagtailcommonblocks/compare/0.0.1...0.0.2
-[0.1]: https://github.com/springload/wagtailcommonblocks/compare/a9159c46ab8b6cf31213b9c97730fc5fd40c309c...0.0.1
+[Unreleased]: https://github.com/springload/wagtailcommonblocks/compare/0.1...HEAD
+[0.1]: https://github.com/springload/wagtailcommonblocks/compare/0.0.3...0.1
+[0.0.3]: https://github.com/springload/wagtailcommonblocks/compare/0.0.2...0.0.3
+[0.0.2]: https://github.com/springload/wagtailcommonblocks/compare/0.0.1...0.0.2
+[0.0.1]: https://github.com/springload/wagtailcommonblocks/compare/a9159c46ab8b6cf31213b9c97730fc5fd40c309c...0.0.1
