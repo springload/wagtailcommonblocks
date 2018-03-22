@@ -7,16 +7,31 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 ### Fixed
+
 - Compatibility with Wagtail 2.0
+
+### Removed
+
+- Compatibility with Wagtail prior 1.8
+
+### Deprecated
+
+- Use Wagtail's builtin `PageChooserBlock` instead of `CommonPageChooserBlock`
+```diff
+- CommonPageChooserBlock(app='my_app', page_class='MyModel')
++ PageChooserBlock(target_model='my_app.MyModel')
+```
 
 ## [0.0.3] - 2017-07-04
 
 ### Fixed
+
 - Compatibility with Wagtail 1.5
 
 ## [0.0.2] - 2016-01-27
 
 ### Fixed
+
 - Compatibility with Wagtail 1.2
 
 ## [0.0.1] - 2015-11-25

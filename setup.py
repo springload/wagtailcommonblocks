@@ -9,12 +9,11 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 # Package dependencies
 install_requires = [
+    'wagtail>=1.8',
 ]
 
 # Testing dependencies
 testing_extras = [
-    # For test site
-    'wagtail==2.0',
 ]
 
 # Documentation dependencies
