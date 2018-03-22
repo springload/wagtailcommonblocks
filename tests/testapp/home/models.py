@@ -13,7 +13,7 @@ except ImportError:
 
 
 class TestPage(Page):
-    text_field = fields.SimpleRichTextField()
+    text_field = fields.SimpleRichTextField(blank=True)
     body_blocks = StreamField([
         ('text', blocks.SimpleRichTextBlock()),
         ('quote', blocks.CommonQuoteBlock()),
@@ -23,8 +23,7 @@ class TestPage(Page):
         ('internal', blocks.CommonInternalLink()),
         ('external', blocks.CommonExternalLink()),
         ('links', blocks.CommonLinksBlock()),
-        ('page', blocks.CommonPageChooserBlock()),
-    ])
+    ], blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('text_field'),

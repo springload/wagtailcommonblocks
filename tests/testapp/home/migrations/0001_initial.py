@@ -4,10 +4,17 @@ import commonblocks.blocks
 import commonblocks.fields
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
-import wagtail.embeds.blocks
-import wagtail.images.blocks
+
+try:
+    import wagtail.core.blocks as core_blocks
+    import wagtail.core.fields as core_fields
+    import wagtail.embeds.blocks as embeds_blocks
+    import wagtail.images.blocks as images_blocks
+except ImportError:
+    import wagtail.wagtailcore.blocks as core_blocks
+    import wagtail.wagtailcore.fields as core_fields
+    import wagtail.wagtailembeds.blocks as embeds_blocks
+    import wagtail.wagtailimages.blocks as images_blocks
 
 
 class Migration(migrations.Migration):
@@ -15,7 +22,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('wagtailcore', '0040_page_draft_title'),
+        ('wagtailcore', '0032_add_bulk_delete_page_permission'),
     ]
 
     operations = [
@@ -23,8 +30,8 @@ class Migration(migrations.Migration):
             name='TestPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('text_field', commonblocks.fields.SimpleRichTextField()),
-                ('body_blocks', wagtail.core.fields.StreamField((('text', commonblocks.blocks.SimpleRichTextBlock()), ('quote', wagtail.core.blocks.StructBlock((('quote', commonblocks.blocks.SimpleRichTextBlock(required=True)), ('author', wagtail.core.blocks.CharBlock(required=False)), ('author_title', wagtail.core.blocks.CharBlock(required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(required=False))))), ('image', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock(required=True)), ('alternative_title', wagtail.core.blocks.CharBlock(required=False)), ('caption', commonblocks.blocks.SimpleRichTextBlock(required=False)), ('attribution', wagtail.core.blocks.CharBlock(required=False)), ('license_url', wagtail.core.blocks.URLBlock(required=False)), ('license_name', wagtail.core.blocks.CharBlock(required=False))))), ('heading', wagtail.core.blocks.StructBlock((('size', wagtail.core.blocks.ChoiceBlock(choices=[('', 'Choose your heading'), ('h2', 'h2'), ('h3', 'h3'), ('h4', 'h4'), ('h5', 'h5')], help_text='Heading Size')), ('title', wagtail.core.blocks.CharBlock(required=True)), ('subtitle', wagtail.core.blocks.CharBlock(required=False))))), ('video', wagtail.core.blocks.StructBlock((('video', wagtail.embeds.blocks.EmbedBlock(help_text='Paste your video URL ie: https://www.youtube.com/watch?v=05GKqTZGRXU', required=True)), ('caption', commonblocks.blocks.SimpleRichTextBlock(required=False))))), ('internal', wagtail.core.blocks.StructBlock((('link', wagtail.core.blocks.PageChooserBlock(required=True)), ('title', wagtail.core.blocks.CharBlock(required=False))))), ('external', wagtail.core.blocks.StructBlock((('link', wagtail.core.blocks.URLBlock(required=True)), ('title', wagtail.core.blocks.CharBlock(required=True)), ('target', wagtail.core.blocks.ChoiceBlock(choices=[('', 'Open link in'), ('_self', 'Same window'), ('_blank', 'New window')], help_text='Open link in'))))), ('links', wagtail.core.blocks.StreamBlock((('internal_link', wagtail.core.blocks.StructBlock((('link', wagtail.core.blocks.PageChooserBlock(required=True)), ('title', wagtail.core.blocks.CharBlock(required=False))), label='Internal page')), ('external_link', wagtail.core.blocks.StructBlock((('link', wagtail.core.blocks.URLBlock(required=True)), ('title', wagtail.core.blocks.CharBlock(required=True)), ('target', wagtail.core.blocks.ChoiceBlock(choices=[('', 'Open link in'), ('_self', 'Same window'), ('_blank', 'New window')], help_text='Open link in'))), label='External Page'))))), ('page', commonblocks.blocks.CommonPageChooserBlock())))),
+                ('text_field', commonblocks.fields.SimpleRichTextField(blank=True)),
+                ('body_blocks', core_fields.StreamField((('text', commonblocks.blocks.SimpleRichTextBlock()), ('quote', core_blocks.StructBlock((('quote', commonblocks.blocks.SimpleRichTextBlock(required=True)), ('author', core_blocks.CharBlock(required=False)), ('author_title', core_blocks.CharBlock(required=False)), ('image', images_blocks.ImageChooserBlock(required=False))))), ('image', core_blocks.StructBlock((('image', images_blocks.ImageChooserBlock(required=True)), ('alternative_title', core_blocks.CharBlock(required=False)), ('caption', commonblocks.blocks.SimpleRichTextBlock(required=False)), ('attribution', core_blocks.CharBlock(required=False)), ('license_url', core_blocks.URLBlock(required=False)), ('license_name', core_blocks.CharBlock(required=False))))), ('heading', core_blocks.StructBlock((('size', core_blocks.ChoiceBlock(choices=[('', 'Choose your heading'), ('h2', 'h2'), ('h3', 'h3'), ('h4', 'h4'), ('h5', 'h5')], help_text='Heading Size')), ('title', core_blocks.CharBlock(required=True)), ('subtitle', core_blocks.CharBlock(required=False))))), ('video', core_blocks.StructBlock((('video', embeds_blocks.EmbedBlock(help_text='Paste your video URL ie: https://www.youtube.com/watch?v=05GKqTZGRXU', required=True)), ('caption', commonblocks.blocks.SimpleRichTextBlock(required=False))))), ('internal', core_blocks.StructBlock((('link', core_blocks.PageChooserBlock(required=True)), ('title', core_blocks.CharBlock(required=False))))), ('external', core_blocks.StructBlock((('link', core_blocks.URLBlock(required=True)), ('title', core_blocks.CharBlock(required=True)), ('target', core_blocks.ChoiceBlock(choices=[('', 'Open link in'), ('_self', 'Same window'), ('_blank', 'New window')], help_text='Open link in'))))), ('links', core_blocks.StreamBlock((('internal_link', core_blocks.StructBlock((('link', core_blocks.PageChooserBlock(required=True)), ('title', core_blocks.CharBlock(required=False))), label='Internal page')), ('external_link', core_blocks.StructBlock((('link', core_blocks.URLBlock(required=True)), ('title', core_blocks.CharBlock(required=True)), ('target', core_blocks.ChoiceBlock(choices=[('', 'Open link in'), ('_self', 'Same window'), ('_blank', 'New window')], help_text='Open link in'))), label='External Page')))))), blank=True)),
             ],
             options={
                 'abstract': False,
