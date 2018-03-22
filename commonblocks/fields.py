@@ -4,6 +4,8 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.db import models
 from django.forms import Media
 
+import wagtail
+
 try:
     from wagtail.admin.rich_text import HalloRichTextArea
     from wagtail.admin.rich_text.converters.editor_html import DbWhitelister
@@ -15,23 +17,35 @@ except ImportError:
 
 
 allow_without_attributes = attribute_rule({})
+ELEMENT_RULES = {
+    '[document]': allow_without_attributes,
+    'a': attribute_rule({'href': check_url, 'id': True, 'linktype': True}),
+    'p': allow_without_attributes,
+    'b': allow_without_attributes,
+    'i': allow_without_attributes,
+    'u': allow_without_attributes,
+    'ul': allow_without_attributes,
+    'ol': allow_without_attributes,
+    'li': allow_without_attributes,
+}
 
 
-class SimpleDbWhitelister(DbWhitelister):
-    """
-    DbWhitelister to allow/disallow stuff on the text editor
-    """
-    element_rules = {
-        '[document]': allow_without_attributes,
-        'a': attribute_rule({'href': check_url, 'id': True, 'linktype': True}),
-        'p': allow_without_attributes,
-        'b': allow_without_attributes,
-        'i': allow_without_attributes,
-        'u': allow_without_attributes,
-        'ul': allow_without_attributes,
-        'ol': allow_without_attributes,
-        'li': allow_without_attributes,
-    }
+if wagtail.VERSION >= (2,):
+    class SimpleDbWhitelister(DbWhitelister):
+        """
+        DbWhitelister to allow/disallow stuff on the text editor
+        """
+
+        def __init__(self, converter_rules=None):
+            super(SimpleDbWhitelister, self).__init__(converter_rules or [])
+            self.element_rules = ELEMENT_RULES
+
+else:
+    class SimpleDbWhitelister(DbWhitelister):
+        """
+        DbWhitelister to allow/disallow stuff on the text editor
+        """
+        element_rules = ELEMENT_RULES
 
 
 class SimpleRichTextArea(HalloRichTextArea):
@@ -78,7 +92,11 @@ class SimpleRichTextArea(HalloRichTextArea):
         original_value = super(SimpleRichTextArea, self).value_from_datadict(data, files, name)
         if original_value is None:
             return None
-        return SimpleDbWhitelister.clean(original_value)
+
+        if wagtail.VERSION >= (2,):
+            return SimpleDbWhitelister().clean(original_value)
+        else:
+            return SimpleDbWhitelister.clean(original_value)
 
     @property
     def media(self):
