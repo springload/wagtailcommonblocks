@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Compatibility with Wagtail prior 1.8
 
+### Changed
+
+- Now licensed under MIT, #3
+
 ### Deprecated
 
 - Use Wagtail's builtin `PageChooserBlock` instead of `CommonPageChooserBlock`
