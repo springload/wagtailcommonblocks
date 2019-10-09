@@ -6,8 +6,7 @@ from django.utils.functional import cached_property
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from commonblocks.fields import SimpleRichTextArea
-from commonblocks.simple_rich_text import SimpleRichText
+from commonblocks.fields import SIMPLERICHTEXT_FEATURES
 
 try:
     from wagtail.core import blocks
@@ -60,24 +59,8 @@ class SimpleRichTextBlock(RichTextBlock):
     """
     Custom block inheriting from Wagtail's original one but replacing the RichText by a SimpleRichText
     """
-    def get_default(self):
-        if isinstance(self.meta.default, SimpleRichText):
-            return self.meta.default
-        else:
-            return SimpleRichText(self.meta.default)
-
-    def to_python(self, value):
-        # convert a source-HTML string from the JSONish representation
-        # to a SimpleRichText object
-        return SimpleRichText(value)
-
-    def value_from_form(self, value):
-        # RichTextArea returns a source-HTML string; concert to a SimpleRichText object
-        return SimpleRichText(value)
-
-    @cached_property
-    def field(self):
-        return forms.CharField(widget=SimpleRichTextArea, **self.field_options)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, features=SIMPLERICHTEXT_FEATURES, **kwargs)
 
     class Meta:
         icon = 'bold'
