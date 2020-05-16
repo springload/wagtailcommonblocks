@@ -173,12 +173,6 @@ class CommonMailToLink(blocks.StructBlock):
     """
     mailto = blocks.EmailBlock(required=True)
     title = blocks.CharBlock(required=True)
-    target = blocks.ChoiceBlock(
-        required=True,
-        choices=TARGETS,
-        default='_self',
-        help_text=_('Open Email')
-    )
 
     class Meta:
         template = 'commonblocks/mailto_link.html'
