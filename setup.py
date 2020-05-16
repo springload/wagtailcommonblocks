@@ -22,7 +22,7 @@ documentation_extras = [
 
 setup(
     name='wagtailcommonblocks',
-    version='0.1',
+    version='0.2',
     packages=['commonblocks'],
     include_package_data=True,
     license='MIT',
