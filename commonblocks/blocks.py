@@ -167,6 +167,23 @@ class CommonInternalLink(blocks.StructBlock):
         icon = 'link'
 
 
+class CommonMailToLink(blocks.StructBlock):
+    """
+    Single Mailto Tile Block
+    """
+    mailto = blocks.EmailBlock(required=True)
+    title = blocks.CharBlock(required=True)
+    target = blocks.ChoiceBlock(
+        required=True,
+        choices=TARGETS,
+        default='_self',
+        help_text=_('Open Email')
+    )
+
+    class Meta:
+        template = 'commonblocks/mailto_link.html'
+        icon = 'site'
+
 class CommonExternalLink(blocks.StructBlock):
     """
     Single External Tile Block

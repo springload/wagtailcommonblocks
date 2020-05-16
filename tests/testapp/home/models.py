@@ -22,6 +22,7 @@ class TestPage(Page):
         ('video', blocks.CommonVideoBlock()),
         ('internal', blocks.CommonInternalLink()),
         ('external', blocks.CommonExternalLink()),
+        ('mailto', blocks.CommonMailToLink()),
         ('links', blocks.CommonLinksBlock()),
     ], blank=True)
 
