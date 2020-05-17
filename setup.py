@@ -22,7 +22,7 @@ documentation_extras = [
 
 setup(
     name='wagtailcommonblocks',
-    version='0.1',
+    version='0.2',
     packages=['commonblocks'],
     include_package_data=True,
     license='MIT',
@@ -44,6 +44,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],

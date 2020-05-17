@@ -8,6 +8,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ...
 
+## [0.2] - 2020-05-16
+
+### Fixed
+
+- Compatibility with Django 3.0 and wagtail >= 2.8
+
+### Removed
+
+- Compatibility with python 2
+
+### Changed
+
+
+### Deprecated
+
+
+### Upgrade consideration
+
 ## [0.1] - 2018-03-22
 
 ### Fixed
