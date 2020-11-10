@@ -34,7 +34,7 @@ TARGETS = (
     ('_blank', 'New window'),
 )
 
-HEADINGS = (('', _('Choose your heading')), ) + getattr(settings, 'COMMONBLOCKS_HEADINGS', DEFAULT_COMMONBLOCKS_HEADING)
+HEADINGS = (('', _('Choose your heading')), ) + getattr(settings, 'COMMONBLOCKS_HEADING', DEFAULT_COMMONBLOCKS_HEADING)
 
 
 class CommonPageChooserBlock(blocks.PageChooserBlock):
